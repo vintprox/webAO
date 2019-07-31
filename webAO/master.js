@@ -1,5 +1,13 @@
 const MASTERSERVER_IP = "master.aceattorneyonline.com:27014";
 
+let oldLoading = true;
+export function onLoad(){
+	if (!(/webOS|iPod|BlackBerry|BB|PlayBook|IEMobile|Windows Phone|Kindle|Silk|PlayStation|Opera Mini/i.test(navigator.userAgent))) {
+		oldLoading = false;
+	}
+}
+window.onLoad = onLoad;
+
 const masterserver = new WebSocket("ws://" + MASTERSERVER_IP);
 masterserver.onopen = (evt) => onOpen(evt);
 masterserver.onmessage = (evt) => onMessage(evt);
@@ -8,23 +16,29 @@ const descs = [];
 descs[99] = "This is your computer on port 27016";
 const onlinec = [];
 
-function setServ(ID) {
+export function setServ(ID) {
 	console.log(descs[ID]);
 	if (descs[ID] !== undefined) {
-		document.getElementById("serverdescC").innerHTML = "<b>Online: "+onlinec[ID]+"</b><br>" +descs[ID];
+		document.getElementById("serverdescC").innerHTML = "<b>Online: " + onlinec[ID] + "</b><br>" + descs[ID];
 	}
 	else {
 		document.getElementById("serverdescC").innerHTML = "";
 	}
 }
+window.setServ = setServ;
 
 function onOpen(_e) {
 	masterserver.send("ID#webAO#webAO#%");
-	masterserver.send("ALL#%");
+	if (oldLoading === true) {
+		masterserver.send("askforservers#%");
+	}
+	else {
+		masterserver.send("ALL#%");
+	}
 	masterserver.send("VC#%");
 }
 
-function checkOnline(serverID,coIP) {
+function checkOnline(serverID, coIP) {
 	function onCOOpen(_e) {
 		document.getElementById(`server${serverID}`).className = "available";
 		oserv.send("HI#webAO#%");
@@ -43,14 +57,14 @@ function checkOnline(serverID,coIP) {
 
 	var oserv = new WebSocket("ws://" + coIP);
 
-	oserv.onopen = function(evt) {
+	oserv.onopen = function (evt) {
 		onCOOpen(evt);
 	};
 
-	oserv.onmessage = function(evt) {
+	oserv.onmessage = function (evt) {
 		onCOMessage(evt);
 	};
-	
+
 }
 
 function onMessage(e) {
@@ -65,13 +79,24 @@ function onMessage(e) {
 			const args = serverEntry.split("&");
 			const asset = args[4] ? `&asset=${args[4]}` : "";
 
-			document.getElementById("masterlist").innerHTML += 
+			document.getElementById("masterlist").innerHTML +=
 				`<li id="server${i}" class="unavailable" onmouseover="setServ(${i})"><p>${args[0]}</p>`
 				+ `<a class="button" href="client.html?mode=watch&ip=${args[2]}:${args[3]}${asset}">Watch</a>`
 				+ `<a class="button" href="client.html?mode=join&ip=${args[2]}:${args[3]}${asset}">Join</a></li><br/>`;
 			descs[i] = args[1];
-			setTimeout(checkOnline(i, args[2] + ":" + args[3]), 3000);
+			setTimeout(checkOnline(i, args[2] + ":" + args[3]), 100);
 		}
+	} else if (header === "SN") {
+		const args = msg.split("#");
+		const i = args[1];
+		console.log(args);
+		document.getElementById("masterlist").innerHTML +=
+			`<li id="server${i}" class="unavailable" onmouseover="setServ(${i})"><p>${args[5]}</p>`
+			+ `<a class="button" href="client.html?mode=watch&ip=${args[2]}:${args[4]}">Watch</a>`
+			+ `<a class="button" href="client.html?mode=join&ip=${args[2]}:${args[4]}">Join</a></li><br/>`;
+		descs[i] = args[6];
+		masterserver.send("SR#" + i + "#%");
+		setTimeout(checkOnline(i, args[2] + ":" + args[4]), i*1000);
 	} else if (header === "servercheok") {
 		const args = msg.split("#").slice(1);
 		console.log(args);
