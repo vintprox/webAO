@@ -46,9 +46,9 @@ Network Trash Folder
 Temporary Items
 .apdisk
 
-# Node module directory
+# Node modules directory
 node_modules
 
-# Minified files in the wrong folder (this is for testing)
-*.b.js
-*.b.js.map
+# Temporarily unnecessary IDE file
+*.code-workspace
+
