@@ -1,36 +1,33 @@
 {
   "name": "webao",
-  "version": "2.6.0",
-  "description": "Web-based Attorney Online client",
-  "main": "client.js",
+  "version": "3.0.0-next",
+  "private": true,
+  "description": "Attorney Online Web Client",
   "scripts": {
-    "babel": "babel ui.js -o ui.b.js",
-    "webpack": "webpack",
     "deploy": "cross-env NODE_ENV=production webpack -p",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "echo \"No tests were provided... yet.\" && exit 1",
     "build": "webpack --config webpack.config.js",
     "start": "webpack-dev-server --config webpack.config.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/stonedDiscord/stonedDiscord.github.io.git"
+    "url": "git+https://github.com/AttorneyOnline/webAO.git"
   },
   "author": "stonedDiscord",
   "bugs": {
-    "url": "https://github.com/stonedDiscord/stonedDiscord.github.io/issues"
+    "url": "https://github.com/AttorneyOnline/webAO/issues"
   },
-  "homepage": "https://github.com/stonedDiscord/stonedDiscord.github.io#readme",
+  "homepage": "https://github.com/AttorneyOnline/webAO#readme",
   "devDependencies": {
-    "@babel/core": "^7.4.5",
-    "@babel/preset-env": "^7.4.5",
+    "@babel/core": "^7.5.5",
+    "@babel/preset-env": "^7.5.5",
     "babel-loader": "^8.0.6",
-    "eslint": "^6.0.1",
-    "golden-layout": "^1.5.9",
-    "webpack": "^4.35.3",
+    "eslint": "^6.1.0",
+    "webpack": "^4.39.1",
     "webpack-cli": "^3.3.6"
   },
   "dependencies": {
     "core-js": "^3.1.4",
-    "regenerator-runtime": "^0.13.2"
+    "regenerator-runtime": "^0.13.3"
   }
 }
