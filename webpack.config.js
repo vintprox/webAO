@@ -2,28 +2,43 @@
 
 const path = require('path');
 
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+
+var ErudaWebpackPlugin;
+
+try {
+  ErudaWebpackPlugin = require('eruda-webpack-plugin');
+} catch(e) {}
+
+const srcBasePath = path.resolve(__dirname, 'src');
+const publicBasePath = path.resolve(__dirname, 'public');
+
 module.exports = {
   entry: {
-    menu: 'src/menu.js',
-    game: 'src/game.js'
+    menu: './src/menu.js',
+    game: './src/game.js'
   },
   output: {
-    path: path.resolve(__dirname, 'public'),
+    path: publicBasePath,
     filename: '[name].bundle.js',
     publicPath: '/'
   },
   optimization: {
     splitChunks: {
       chunks: 'all',
+      minSize: 0,
+      minChunks: 2,
       cacheGroups: {
-	commons: {
-	  chunks: 'initial',
-	  minChunks: 2,
-	  minSize: 0
-	},
-	vendors: {
-	  chunks: 'all',
-	  priority: 10
+        common: {
+          name: 'common',
+          chunks: 'initial',
+          reuseExistingChunk: true,
+        },
+        vendor: {
+          name: 'vendor',
+          chunks: 'all',
+          test: /node_modules/,
+          enforce: true
         }
       }
     }
@@ -32,7 +47,7 @@ module.exports = {
     rules: [
       {
         test: /\.js$/,
-        include: [path.resolve(__dirname, 'src')],
+        include: [srcBasePath],
         use: {
           loader: 'babel-loader',
           options: {
@@ -52,20 +67,30 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
+      title: `Attorney Online`,
       hash: true,
       inject: true,
       template: 'src/app.ejs',
-      filename: `public/index.html`,
-      chunks: ['menu']
+      filename: 'index.html',
+      chunks: ['common', 'menu']
     }),
     new HtmlWebpackPlugin({
+      title: `Attorney Online :: GAME IS ON`,
       hash: true,
       inject: true,
       template: 'src/app.ejs',
-      filename: `public/client.html`,
-      chunks: ['game']
-    })
+      filename: 'client.html',
+      chunks: ['common', 'game']
+    }),
+    ErudaWebpackPlugin
+      ? new ErudaWebpackPlugin({
+        plugins: ['dom']
+      })
+      : undefined
   ],
+  devServer:{
+    contentBase: publicBasePath,
+    port: 3000
+  },
   devtool: 'source-map'
 };
-
