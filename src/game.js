@@ -1,4 +1,0 @@
-/**
- * webAO
- * Game Screen
- */

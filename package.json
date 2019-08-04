@@ -24,13 +24,17 @@
     "babel-loader": "^8.0.6",
     "eslint": "^6.1.0",
     "html-webpack-plugin": "^3.2.0",
+    "vue-template-compiler": "^2.6.10",
     "webpack": "^4.39.1",
     "webpack-cli": "^3.3.6",
     "webpack-dev-server": "^3.7.2"
   },
   "dependencies": {
     "core-js": "^3.1.4",
-    "regenerator-runtime": "^0.13.3"
+    "regenerator-runtime": "^0.13.3",
+    "vue": "^2.6.10",
+    "vue-loader": "^15.7.1",
+    "vue-router": "^3.0.7"
   },
   "optionalDependencies": {
     "eruda-dom": "^1.0.2",

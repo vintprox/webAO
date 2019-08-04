@@ -3,6 +3,7 @@
 const path = require('path');
 
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const VueLoaderPlugin = require("vue-loader/lib/plugin");
 
 var ErudaWebpackPlugin;
 
@@ -15,8 +16,7 @@ const publicBasePath = path.resolve(__dirname, 'public');
 
 module.exports = {
   entry: {
-    menu: './src/menu.js',
-    game: './src/game.js'
+    main: './src/main.js'
   },
   output: {
     path: publicBasePath,
@@ -25,15 +25,7 @@ module.exports = {
   },
   optimization: {
     splitChunks: {
-      chunks: 'all',
-      minSize: 0,
-      minChunks: 2,
       cacheGroups: {
-        common: {
-          name: 'common',
-          chunks: 'initial',
-          reuseExistingChunk: true,
-        },
         vendor: {
           name: 'vendor',
           chunks: 'all',
@@ -62,8 +54,20 @@ module.exports = {
             ]
           }
         }
+      },
+      {
+        test: /\.vue$/,
+        loader: 'vue-loader',
+        options: {
+          loaders: {
+            js: 'babel-loader'
+          }
+        }
       }
     ]
+  },
+  resolve: {
+    extensions: ['.js', '.vue']
   },
   plugins: [
     new HtmlWebpackPlugin({
@@ -71,13 +75,14 @@ module.exports = {
       inject: true,
       template: 'src/app.ejs',
       filename: 'index.html',
-      chunks: ['common']
+      chunks: ['vendor', 'main']
     }),
     new HtmlWebpackPlugin({
       template: 'src/app.ejs',
       filename: 'client.html',
       redirect: true
     }),
+    new VueLoaderPlugin(),
     ErudaWebpackPlugin
       ? new ErudaWebpackPlugin({
         plugins: ['dom']
