@@ -67,20 +67,16 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      title: `Attorney Online`,
       hash: true,
       inject: true,
       template: 'src/app.ejs',
       filename: 'index.html',
-      chunks: ['common', 'menu']
+      chunks: ['common']
     }),
     new HtmlWebpackPlugin({
-      title: `Attorney Online :: GAME IS ON`,
-      hash: true,
-      inject: true,
       template: 'src/app.ejs',
       filename: 'client.html',
-      chunks: ['common', 'game']
+      redirect: true
     }),
     ErudaWebpackPlugin
       ? new ErudaWebpackPlugin({
@@ -90,7 +86,8 @@ module.exports = {
   ],
   devServer:{
     contentBase: publicBasePath,
-    port: 3000
+    port: 3000,
+    historyApiFallback: true
   },
   devtool: 'source-map'
 };
