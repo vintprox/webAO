@@ -34,7 +34,8 @@
     "regenerator-runtime": "^0.13.3",
     "vue": "^2.6.10",
     "vue-loader": "^15.7.1",
-    "vue-router": "^3.0.7"
+    "vue-router": "^3.0.7",
+    "vuex": "^3.1.1"
   },
   "optionalDependencies": {
     "eruda-dom": "^1.0.2",

@@ -1,5 +1,15 @@
 <template>
   <div id="MainMenu">
-    Welcome to Attorney Online!
+    Hello, <strong>{{ name }}</strong>! Welcome to Attorney Online 3.
   </div>
 </template>
+
+<script>
+import { mapState } from 'vuex';
+
+export default {
+  computed: {
+    ...mapState('settings', ['name'])
+  }
+}
+</script>
