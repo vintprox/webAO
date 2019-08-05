@@ -11,7 +11,7 @@ import Game from './views/Game';
 
 Vue.use(Router);
 
-export default new Router({
+const router = new Router({
 
   // All top level routes provide their own views to application
   routes: [
@@ -32,3 +32,17 @@ export default new Router({
   ]
   
 });
+
+let query = new URLSearchParams(location.search);
+
+// Backwards compatibility with URLs contraining `ìp` query parameter
+let host = query.get('ip');
+if (host) {
+  router.replace({ name: 'Game', params: { host } });
+}
+
+// Remove query string to avoid confusion
+let cleanURL = location.href.replace(location.search, '');
+history.replaceState({}, document.title, cleanURL);
+
+export default router;
