@@ -4,21 +4,19 @@
     <title>Attorney Online</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
+    <meta name="description" content="MMO courtroom drama simulator. Play in browser now!">
+    <meta name="theme-color" content="#744210">
     <link rel="shortcut icon" href="assets/images/favicon.ico" type="image/x-icon">
     <link rel="icon" href="assets/images/favicon.ico">
+    <% if (htmlWebpackPlugin.options.production) { %>
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-113494687-1"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
       gtag('config', 'UA-113494687-1');
-
-      <% if (htmlWebpackPlugin.options.redirect) { %>
-      location.href = location.href.replace('<%= htmlWebpackPlugin.options.filename %>', '');
-      <% } %>
     </script>
+    <% } %>
   </head>
   <body>
     <div id="App"></div>

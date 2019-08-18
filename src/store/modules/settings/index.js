@@ -4,6 +4,7 @@
 
 const state = {
   name: 'Anonymous',
+  fullscreen: true,
   volume: {
     music: .8,
     blip: .6,

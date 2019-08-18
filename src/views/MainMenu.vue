@@ -1,15 +1,49 @@
 <template>
   <div id="MainMenu">
-    Hello, <strong>{{ name }}</strong>! Welcome to Attorney Online 3.
+    <nav
+      :class="`
+        MainMenuTabButtons
+        flex
+      `"
+    >
+      <AOButton
+        v-for="tab in tabs"
+        :key="tab.name"
+        :class="[
+          `
+            MainMenuTabButton
+            m-2
+          `,
+          tab.isService && `order-last`
+        ]"
+        :title="tab.component.name + '.description'"
+        @click.native="setOpenTabName(tab.name)"
+      >{{ tab.component.name }}.label</AOButton>
+      <span class="flex-grow" />
+    </nav>
+    <keep-alive>
+      <component
+        :is="openTab ? openTab.component : null"
+        :class="`
+          MainMenuTab
+          p-8
+        `"
+      />
+    </keep-alive>
   </div>
 </template>
 
 <script>
-import { mapState } from 'vuex';
+import { mapState, mapGetters, mapMutations } from 'vuex';
 
 export default {
+  name: 'MainMenu',
   computed: {
-    ...mapState('settings', ['name'])
+    ...mapState(['tabs']),
+    ...mapGetters(['openTab'])
+  },
+  methods: {
+    ...mapMutations(['setOpenTabName'])
   }
 }
 </script>
