@@ -26,6 +26,7 @@ module.exports = {
   output: {
     path: publicBasePath,
     filename: '[name].bundle.js',
+    chunkFilename: '[name].bundle.js',
     publicPath: '/'
   },
   optimization: {
@@ -83,6 +84,11 @@ module.exports = {
             js: 'babel-loader'
           }
         }
+      },
+      // Rule for compiling YAML
+      {
+        test: /\.yml$/,
+        loader: 'js-yaml-loader'
       }
     ]
   },
@@ -93,7 +99,7 @@ module.exports = {
       '@': srcBasePath
     },
     // Allow importing stuff without appending listed extensions
-    extensions: ['.js', '.vue']
+    extensions: ['.js', '.vue', '.yml']
   },
   plugins: [
     // Generate index page from template

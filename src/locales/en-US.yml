@@ -1,0 +1,11 @@
+language: English (US)
+
+HelpTab:
+  label: Help
+  description: Interactive guide, information about game and credits.
+SettingsTab:
+  label: Settings
+  description: Tab for global and per-server game settings.
+MultiplayerTab:
+  label: Servers
+  description: List of multiplayer online servers fetched from Master Server.

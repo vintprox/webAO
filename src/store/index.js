@@ -2,6 +2,7 @@
  * Application's Vuex store
  */
 
+import detectNearestLocale from 'detect-nearest-locale';
 import Vue from 'vue';
 import Vuex from 'vuex';
 
@@ -18,8 +19,13 @@ import settings from './modules/settings';
 
 Vue.use(Vuex);
 
+let availableLocales = require.context('@/locales/', false, /^\.\/[^\.]+$/).keys().map(filename => filename.substring(2));
+let browserLocale = detectNearestLocale(availableLocales, navigator.languages);
+
 const state = {
   version,
+  availableLocales,
+  browserLocale,
   tabs: [
     {
       name: 'Help',
@@ -36,7 +42,7 @@ const state = {
       component: MultiplayerTab
     }
   ],
-  openTabName: 'Multiplayer'
+  openTabName: null
 };
 
 export default new Vuex.Store({

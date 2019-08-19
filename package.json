@@ -25,6 +25,7 @@
     "css-loader": "^3.2.0",
     "eslint": "^6.1.0",
     "html-webpack-plugin": "^3.2.0",
+    "js-yaml-loader": "^1.2.2",
     "postcss": "^7.0.17",
     "postcss-loader": "^3.0.0",
     "style-loader": "^1.0.0",
@@ -35,10 +36,12 @@
   },
   "dependencies": {
     "core-js": "^3.1.4",
+    "detect-nearest-locale": "^1.0.1",
     "regenerator-runtime": "^0.13.3",
     "screenfull": "^4.2.1",
     "tailwindcss": "^1.1.1",
     "vue": "^2.6.10",
+    "vue-i18n": "^8.14.0",
     "vue-loader": "^15.7.1",
     "vue-router": "^3.0.7",
     "vuex": "^3.1.1"

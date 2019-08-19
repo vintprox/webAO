@@ -3,6 +3,7 @@
  */
 
 const state = {
+  locale: null,
   name: 'Anonymous',
   fullscreen: true,
   volume: {
@@ -15,5 +16,5 @@ const state = {
 
 export default {
   namespaced: true,
-  state
+  state,
 };

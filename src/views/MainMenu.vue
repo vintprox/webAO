@@ -16,9 +16,10 @@
           `,
           tab.isService && `order-last`
         ]"
-        :title="tab.component.name + '.description'"
+        :title="$t(`${tab.component.name}.description`)"
         @click.native="setOpenTabName(tab.name)"
-      >{{ tab.component.name }}.label</AOButton>
+        v-t="`${tab.component.name}.label`"
+      />
       <span class="flex-grow" />
     </nav>
     <keep-alive>
@@ -34,7 +35,7 @@
 </template>
 
 <script>
-import { mapState, mapGetters, mapMutations } from 'vuex';
+import { mapState, mapGetters, mapMutations, mapActions } from 'vuex';
 
 export default {
   name: 'MainMenu',
@@ -43,7 +44,8 @@ export default {
     ...mapGetters(['openTab'])
   },
   methods: {
-    ...mapMutations(['setOpenTabName'])
+    ...mapMutations(['setOpenTabName']),
+    ...mapActions(['loadLocale'])
   }
 }
 </script>
