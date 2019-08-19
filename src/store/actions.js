@@ -4,7 +4,7 @@ import i18n from '@/i18n';
 
 export default {
   changeLocale({ commit, state }, code) {
-    code = code || state.browserLocale;
+    code = code || state.navigatorLocale;
     if (i18n.locale == code) return Promise.resolve(true);
     if (i18n.messages[code]) return Promise.resolve(commit('setLocale', code));
     return import(/* webpackChunkName: "locale-[request]" */ `@/locales/${code}`).then(messages => {

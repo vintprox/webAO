@@ -35,7 +35,7 @@
 </template>
 
 <script>
-import { mapState, mapGetters, mapMutations, mapActions } from 'vuex';
+import { mapState, mapGetters, mapMutations } from 'vuex';
 
 export default {
   name: 'MainMenu',
@@ -44,8 +44,7 @@ export default {
     ...mapGetters(['openTab'])
   },
   methods: {
-    ...mapMutations(['setOpenTabName']),
-    ...mapActions(['loadLocale'])
+    ...mapMutations(['setOpenTabName'])
   }
 }
 </script>

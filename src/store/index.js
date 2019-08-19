@@ -20,12 +20,13 @@ import settings from './modules/settings';
 Vue.use(Vuex);
 
 let availableLocales = require.context('@/locales/', false, /^\.\/[^\.]+$/).keys().map(filename => filename.substring(2));
-let browserLocale = detectNearestLocale(availableLocales, navigator.languages);
+
+let navigatorLocale = detectNearestLocale(availableLocales, navigator.languages);
 
 const state = {
   version,
   availableLocales,
-  browserLocale,
+  navigatorLocale,
   tabs: [
     {
       name: 'Help',

@@ -1,4 +1,4 @@
-language: English (US)
+localeName: English (US)
 
 HelpTab:
   label: Help
