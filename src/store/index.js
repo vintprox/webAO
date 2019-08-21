@@ -9,8 +9,11 @@ import Vuex from 'vuex';
 import { version } from '~/package.json';
 
 import HelpTab from '@/components/HelpTab';
+import HelpTabIcon from 'i/HelpRhombus';
 import SettingsTab from '@/components/SettingsTab';
-import MultiplayerTab from '@/components/MultiplayerTab';
+import SettingsTabIcon from 'i/Cogs';
+import ServersTab from '@/components/ServersTab';
+import ServersTabIcon from 'i/Server';
 
 import getters from './getters';
 import mutations from './mutations';
@@ -31,16 +34,19 @@ const state = {
     {
       name: 'Help',
       component: HelpTab,
+      icon: HelpTabIcon,
       isService: true
     },
     {
       name: 'Settings',
       component: SettingsTab,
+      icon: SettingsTabIcon,
       isService: true
     },
     {
-      name: 'Multiplayer',
-      component: MultiplayerTab
+      name: 'Servers',
+      component: ServersTab,
+      icon: ServersTabIcon
     }
   ],
   openTabName: null

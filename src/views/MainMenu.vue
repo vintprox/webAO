@@ -18,8 +18,19 @@
         ]"
         :title="$t(`${tab.component.name}.description`)"
         @click.native="setOpenTabName(tab.name)"
-        v-t="`${tab.component.name}.label`"
-      />
+      >
+        <component
+          :is="tab.icon"
+          :class="`
+            MainMenuTabIcon
+            fill-current
+          `"
+        />
+        <span
+          class="MainMenuTabLabel"
+          v-t="`${tab.component.name}.label`"
+        />
+      </AOButton>
       <span class="flex-grow" />
     </nav>
     <keep-alive>

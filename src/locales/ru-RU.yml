@@ -6,6 +6,6 @@ HelpTab:
 SettingsTab:
   label: Настройки
   description: Вкладка для игровых настроек как глобальных, так и на основе сервера.
-MultiplayerTab:
+ServersTab:
   label: Серверы
   description: Полученный с Главного Сервера перечень многопользовательских серверов в сети.
