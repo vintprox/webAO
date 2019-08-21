@@ -89,6 +89,23 @@ module.exports = {
       {
         test: /\.yml$/,
         loader: 'js-yaml-loader'
+      },
+      // Inline all SVGs
+      {
+        test: /\.svg$/,
+        loader: 'svg-inline-loader'
+      },
+      // Copy PNG images
+      {
+        test: /\.png$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: '[path][name].[ext]?[contenthash]'
+            }
+          }
+        ]
       }
     ]
   },
@@ -96,7 +113,8 @@ module.exports = {
     // Parent directories aliases
     alias: {
       '~': __dirname,
-      '@': srcBasePath
+      '@': srcBasePath,
+      i: 'mdi-vue'
     },
     // Allow importing stuff without appending listed extensions
     extensions: ['.js', '.vue', '.yml']

@@ -52,3 +52,5 @@ node_modules
 # Temporarily unnecessary IDE file
 *.code-workspace
 
+# Build directory
+public
