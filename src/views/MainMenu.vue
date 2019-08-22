@@ -1,5 +1,12 @@
 <template>
   <div id="MainMenu">
+    <div
+      :class="`
+        MainMenuBackdrop
+        absolute inset-0
+      `"
+      v-html="require('~/assets/images/silhouette.svg')"
+    />
     <nav
       :class="`
         MainMenuTabButtons
