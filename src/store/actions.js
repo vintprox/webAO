@@ -12,13 +12,6 @@ export default {
       return commit('setLocale', code);
     });
   },
-  switchTab({ commit, getters }, name) {
-    if (getters.tabsNames.includes(name)) {
-      commit('setOpenTabName', name);
-    } else {
-      console.error(`Tab ${name} is not defined`);
-    }
-  },
   /** Go to fullscreen whenever needed, if possible. */
   fullscreen({ state }) {
     if (
@@ -28,5 +21,5 @@ export default {
     ) {
       screenfull.request();
     }
-  }
+  },
 };

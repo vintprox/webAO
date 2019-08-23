@@ -1,11 +1,11 @@
 <template>
-  <div id="ServersTab">
+  <div :id="$options.name">
     Servers should be listed here...
   </div>
 </template>
 
 <script>
 export default {
-  name: 'ServersTab'
+  name: 'ServersMenuSection'
 }
 </script>

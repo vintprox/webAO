@@ -6,31 +6,24 @@ import Vue from 'vue';
 
 import Router from 'vue-router';
 
-import MainMenu from './views/MainMenu';
+import Start from './views/Start';
 import Game from './views/Game';
 
 Vue.use(Router);
 
 const router = new Router({
-
-  // All top level routes provide their own views to application
   routes: [
-  
     {
       path: '/',
-      name: 'MainMenu',
-      component: MainMenu
+      name: 'Start',
+      component: Start
     },
-
-    // Examples: `/localhost`, `/127.0.0.1:27016`
     {
       path: '/:host',
       name: 'Game',
       component: Game
     }
-  
   ]
-  
 });
 
 let query = new URLSearchParams(location.search);

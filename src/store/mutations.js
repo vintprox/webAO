@@ -5,7 +5,4 @@ export default {
     i18n.locale = code;
     document.documentElement.setAttribute('lang', code);
   },
-  setOpenTabName(state, name) {
-    state.openTabName = name;
-  }
 };

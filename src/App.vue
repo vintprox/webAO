@@ -1,19 +1,20 @@
 <template>
   <div
-    id="App"
     :class="`
+      App
+      overflow-hidden relative
       font-display text-white
       bg-primary-dim
+      w-screen h-screen
       select-none
     `"
   >
     <router-view
       :class="`
-        AppView
-        block overflow-hidden
-        w-screen h-screen
+        absolute inset-0
       `"
     />
+    <Menu />
   </div>
 </template>
 
@@ -21,11 +22,15 @@
 import Vue from 'vue';
 
 import AOButton from '@/components/ui/AOButton';
+import Menu from '@/components/Menu';
 
 Vue.component('AOButton', AOButton);
 
 export default {
-  name: 'App'
+  name: 'App',
+  components: {
+    Menu
+  }
 }
 </script>
 

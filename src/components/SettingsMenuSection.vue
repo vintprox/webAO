@@ -1,11 +1,11 @@
 <template>
-  <div id="SettingsTab">
+  <div :id="$options.name">
     Settings belong here...
   </div>
 </template>
 
 <script>
 export default {
-  name: 'SettingsTab'
+  name: 'SettingsMenuSection'
 }
 </script>
