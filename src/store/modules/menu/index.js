@@ -2,11 +2,11 @@
  * Menu store module
  */
 
-import Settings from '@/components/SettingsMenuSection';
+import Settings from '@/components/Menu/sections/Settings';
 import SettingsIcon from 'i/Cogs';
-import Help from '@/components/HelpMenuSection';
+import Help from '@/components/Menu/sections/Help';
 import HelpIcon from 'i/HelpRhombus';
-import Servers from '@/components/ServersMenuSection';
+import Servers from '@/components/Menu/sections/Servers';
 import ServersIcon from 'i/Server';
 
 import mutations from './mutations';

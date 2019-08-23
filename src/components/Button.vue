@@ -1,7 +1,6 @@
 <template>
   <button
     :class="`
-      AOButton
       focus:text-primary
       focus:bg-white
       border border-white rounded
@@ -12,3 +11,9 @@
     <slot />
   </button>
 </template>
+
+<script>
+export default {
+  name: 'Button'
+}
+</script>

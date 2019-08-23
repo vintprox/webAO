@@ -9,6 +9,12 @@ import router from '@/router';
 import i18n from '@/i18n';
 import App from '@/App';
 
+const globalComponents = require.context('@/components/', false, /^\.\/[^\.]+$/);
+
+globalComponents.keys().forEach(fname => {
+  Vue.component(fname.substring(2), globalComponents(fname).default);
+});
+
 const vm = new Vue({
   el: '#App',
   store,

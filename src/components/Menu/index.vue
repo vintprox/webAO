@@ -11,7 +11,7 @@
         flex
       `"
     >
-      <AOButton
+      <Button
         v-for="section in sections"
         :key="section.name"
         :class="[
@@ -35,7 +35,7 @@
           class="MenuTabLabel"
           v-t="`${section.component.name}.label`"
         />
-      </AOButton>
+      </Button>
       <span class="flex-grow" />
     </nav>
     <keep-alive>

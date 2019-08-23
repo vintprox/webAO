@@ -21,10 +21,7 @@
 <script>
 import Vue from 'vue';
 
-import AOButton from '@/components/ui/AOButton';
 import Menu from '@/components/Menu';
-
-Vue.component('AOButton', AOButton);
 
 export default {
   name: 'App',
