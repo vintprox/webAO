@@ -7,10 +7,11 @@ const state = {
   name: 'Anonymous',
   fullscreen: true,
   volume: {
-    music: .8,
-    blip: .6,
-    sfx: 1,
-    ui: .5
+    ambient: 1,
+    sfx: .9,
+    ui: .8,
+    voice: .7,
+    music: .7,
   }
 };
 

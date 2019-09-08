@@ -11,6 +11,8 @@ import { version } from '~/package.json';
 import getters from './getters';
 import mutations from './mutations';
 import actions from './actions';
+
+import sounds from './modules/sounds';
 import menu from './modules/menu';
 import settings from './modules/settings';
 
@@ -33,6 +35,7 @@ export default new Vuex.Store({
   mutations,
   actions,
   modules: {
+    sounds,
     menu,
     settings,
   }

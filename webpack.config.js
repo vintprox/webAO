@@ -16,6 +16,7 @@ try {
 } catch(e) {}
 
 const srcBasePath = path.resolve(__dirname, 'src');
+const assetsBasePath = path.resolve(__dirname, 'assets');
 const publicBasePath = path.resolve(__dirname, 'public');
 
 module.exports = {
@@ -106,6 +107,18 @@ module.exports = {
             }
           }
         ]
+      },
+      // Copy sound files
+      {
+        test: /\.(webm|wav|mp3)$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: '[path][name].[ext]?[contenthash]'
+            }
+          }
+        ]
       }
     ]
   },
@@ -114,6 +127,7 @@ module.exports = {
     alias: {
       '~': __dirname,
       '@': srcBasePath,
+      '=': assetsBasePath,
       i: 'mdi-vue'
     },
     // Allow importing stuff without appending listed extensions
@@ -139,6 +153,8 @@ module.exports = {
   ],
   // Run development server on `http://localhost:3000`
   devServer: {
+    hot: true,
+    inline: true,
     contentBase: publicBasePath,
     port: 3000,
     historyApiFallback: true

@@ -39,6 +39,7 @@
   "dependencies": {
     "core-js": "^3.1.4",
     "detect-nearest-locale": "^1.0.1",
+    "howler": "^2.1.2",
     "mdi-vue": "^1.0.1",
     "regenerator-runtime": "^0.13.3",
     "screenfull": "^4.2.1",

@@ -22,6 +22,7 @@
           section.isService && `order-last`
         ]"
         :title="$t(`${section.component.name}.description`)"
+        @mousedown.native="playSound('button')"
         @click.native="setOpenSection(section)"
       >
         <component
@@ -51,7 +52,7 @@
 </template>
 
 <script>
-import { mapState, mapMutations } from 'vuex';
+import { mapState, mapMutations, mapActions } from 'vuex';
 
 export default {
   name: 'Menu',
@@ -59,7 +60,8 @@ export default {
     ...mapState('menu', ['sections', 'openSection'])
   },
   methods: {
-    ...mapMutations('menu', ['setOpenSection'])
+    ...mapMutations('menu', ['setOpenSection']),
+    ...mapActions('sounds', ['playSound'])
   }
 }
 </script>
