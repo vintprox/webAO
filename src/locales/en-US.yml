@@ -1,11 +1,31 @@
 localeName: English (US)
 
-SettingsMenuSection:
-  label: Settings
-  description: Tab for global and per-server game settings.
-HelpMenuSection:
-  label: Help
-  description: Interactive guide, information about game and credits.
+CampaignMenuSection:
+  label: Campaign
+  description: |
+    Campaign cases and online events related to them.
+
 ServersMenuSection:
   label: Servers
-  description: List of multiplayer online servers fetched from Master Server.
+  description: |
+    List of multiplayer online servers fetched from Master Server.
+
+AppsMenuSection:
+  label: Apps
+  description: |
+    Various applications for creative needs of Attorney Online player.
+
+RewardsMenuSection:
+  label: Rewards
+  description: |
+    Your achievements and other rewards.
+
+SettingsMenuSection:
+  label: Settings
+  description: |
+    Game settings: global and server-based.
+
+HelpMenuSection:
+  label: Help
+  description: |
+    Interactive guide, information about game and people who worked on it.

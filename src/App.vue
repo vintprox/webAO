@@ -39,6 +39,12 @@ export default {
   --color-primary-dim: theme('colors.yellow.900');
 }
 
+* {
+  -webkit-touch-callout: none;
+  -webkit-text-size-adjust: none;
+  -webkit-tap-hightlight-color: transparent;
+}
+
 @tailwind base;
 
 @tailwind components;

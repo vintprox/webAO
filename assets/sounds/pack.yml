@@ -1,0 +1,9 @@
+name: default
+
+_types:
+  ui: &ui { type: ui, ext: [wav] }
+
+sounds:
+  choosing: { <<: *ui, volume: .1 }
+  pressed: { <<: *ui }
+  returned: { <<: *ui }

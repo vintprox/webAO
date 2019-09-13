@@ -1,11 +1,31 @@
 localeName: Русский
 
-SettingsMenuSection:
-  label: Настройки
-  description: Вкладка для игровых настроек как глобальных, так и на основе сервера.
-HelpMenuSection:
-  label: Помощь
-  description: Интерактивное руководство, информация об игре и авторы.
+CampaignMenuSection:
+  label: Кампания
+  description: |
+    Дела и связанные с ними события в сети.
+
 ServersMenuSection:
   label: Серверы
-  description: Полученный с Главного Сервера перечень многопользовательских серверов в сети.
+  description: |
+    Полученный с Главного Сервера перечень многопользовательских серверов в сети.
+
+AppsMenuSection:
+  label: Приложения
+  description: |
+    Различные приложения для творческих нужд игрока Attorney Online.
+
+RewardsMenuSection:
+  label: Награды
+  description: |
+    Ваши достижения и иные награды.
+
+SettingsMenuSection:
+  label: Настройки
+  description: |
+    Игровые настройки: как глобальные, так и на основе сервера.
+
+HelpMenuSection:
+  label: Помощь
+  description: |
+    Интерактивное руководство, информация об игре и всех, кто над ней работал.
