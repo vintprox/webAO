@@ -45,7 +45,7 @@ module.exports = {
   },
   module: {
     rules: [
-      // Rule for transpiling JavaScript code with latest syntax to one supported by all target browsers
+      // Rule for transpiling JavaScript code with latest syntax to chunks supported by all target browsers
       {
         test: /\.js$/,
         include: [srcBasePath],
@@ -153,8 +153,6 @@ module.exports = {
   ],
   // Run development server on `http://localhost:3000`
   devServer: {
-    hot: true,
-    inline: true,
     contentBase: publicBasePath,
     port: 3000,
     historyApiFallback: true
