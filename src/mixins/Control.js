@@ -43,11 +43,18 @@ function handleHeld(_el, begin) {
 
 document.addEventListener('touchstart', ({ target: el }) => handleHeld(el, true));
 document.addEventListener('touchmove', ({ changedTouches }) => {
-  const t = changedTouches[changedTouches.length - 1];;
+  const t = changedTouches[changedTouches.length - 1];
   const el = document.elementFromPoint(t.clientX, t.clientY);
   handleHeld(el);
 });
 document.addEventListener('touchend', e => handleHeld(false));
+
+document.addEventListener('mousedown', ({ target: el }) => handleHeld(el, true));
+document.addEventListener('mousemove', e => {
+  const el = document.elementFromPoint(e.clientX, e.clientY);
+  handleHeld(el);
+});
+document.addEventListener('mouseup', e => handleHeld(false));
 
 export default {
   props: {
