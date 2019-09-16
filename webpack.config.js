@@ -9,10 +9,27 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const VueLoaderPlugin = require("vue-loader/lib/plugin");
 
-var ErudaWebpackPlugin;
+const plugins = [
+  // Generate index page from template
+  new HtmlWebpackPlugin({
+    hash: true,
+    inject: true,
+    template: 'src/app.ejs',
+    filename: 'index.html',
+    chunks: ['vendor', 'main'],
+    production: process.env.NODE_ENV == 'production'
+  }),
+  new VueLoaderPlugin(),
+];
 
 try {
-  ErudaWebpackPlugin = require('eruda-webpack-plugin');
+  // Add plugin for Eruda embedded developer tools if it was installed
+  let ErudaWebpackPlugin = require('eruda-webpack-plugin');
+  plugins.push(
+    new ErudaWebpackPlugin({
+      plugins: ['dom']
+    })
+  );  
 } catch(e) {}
 
 const srcBasePath = path.resolve(__dirname, 'src');
@@ -133,24 +150,7 @@ module.exports = {
     // Allow importing stuff without appending listed extensions
     extensions: ['.js', '.vue', '.yml']
   },
-  plugins: [
-    // Generate index page from template
-    new HtmlWebpackPlugin({
-      hash: true,
-      inject: true,
-      template: 'src/app.ejs',
-      filename: 'index.html',
-      chunks: ['vendor', 'main'],
-      production: process.env.NODE_ENV == 'production'
-    }),
-    new VueLoaderPlugin(),
-    // Add plugin for Eruda embedded developer tools if it was installed
-    ErudaWebpackPlugin
-      ? new ErudaWebpackPlugin({
-        plugins: ['dom']
-      })
-      : undefined
-  ],
+  plugins,
   // Run development server on `http://localhost:3000`
   devServer: {
     contentBase: publicBasePath,
